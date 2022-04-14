@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Snake</title>
+  <style>
+    body {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      background-color: black;
+    }
+
+    #game-board {
+      background-color: white;
+      width: 100vmin;
+      height: 100vmin;
+      display: grid;
+      grid-template-rows: repeat(21, 1fr);
+      grid-template-columns: repeat(21, 1fr);
+    }
+
+    .snake {
+      background: black;
+      border: 0.1875em solid hsl(228, 7%, 13%);
+      border-radius: 50%;
+      box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
+      height: 2em;
+      width: 2em;
+    }
+
+    .food {
+      position: relative;
+      width: 50px;
+      animation: blinker 2s linear infinite;
+    }
+
+    .food:before,
+    .food:after {
+      background: red;
+      position: absolute;
+      width: 22px;
+      height: 35px;
+      top: 0;
+      left: 22px;
+      content: '';
+      border-radius: 50px 50px 0 0;
+      transform: rotate(-45deg) translateZ(0);
+      -webkit-transform: rotate(-45deg) translateZ(0);
+      transform-origin: 0 100%;
+      -webkit-transform-origin: 0 100%;
+    }
+
+    .food:after {
+      left: 0;
+      transform: rotate(45deg) translateZ(0);
+      -webkit-transform: rotate(45deg) translateZ(0);
+      transform-origin: 100% 100%;
+      -webkit-transform-origin: 100% 100%;
+    }
+
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
+  </style>
+  <script src="game.js" defer type="module"></script>
+</head>
+
+<body>
+  <div id="game-board"></div>
+</body>
+
+</html>
